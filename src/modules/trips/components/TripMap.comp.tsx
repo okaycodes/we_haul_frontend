@@ -6,8 +6,17 @@ import {
   Popup,
   Polyline,
 } from "react-leaflet";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { EldLog } from "../trips.types";
+import Icon from "../../../assets/route-icon.svg";
+
+const customMarker = new L.Icon({
+  iconUrl: Icon,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40],
+});
 
 interface TripMapProps {
   logs: EldLog[];
@@ -39,7 +48,7 @@ export default function TripMap({ logs, coordinates }: TripMapProps) {
             )
           )
           .map((log) => (
-            <Marker key={log.id} position={log.coordinates}>
+            <Marker key={log.id} position={log.coordinates} icon={customMarker}>
               <Popup>{log.action}</Popup>
             </Marker>
           ))}
