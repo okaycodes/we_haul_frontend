@@ -48,8 +48,6 @@ httpClient.interceptors.response.use(
       };
     }
 
-    ("No response received from the server");
-
     return {
       error: true,
       data: null,
